@@ -8,9 +8,9 @@ jobs:
     runs-on: windows-2022
     steps:
     - name: Clonar repositorio
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
-        submodules: 'recursive'
+        submodules: recursive
 
     - name: Configurar Developer Command Prompt
       uses: ilammy/msvc-dev-cmd@v1
@@ -28,8 +28,8 @@ jobs:
       run: |
         mkdir build
         cd build
-        cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DLAF_BACKEND=skia -DSKIA_DIR=C:\deps\skia -DSKIA_LIBRARY_DIR=C:\deps\skia\out\Release-x64 -DSKIA_LIBRARY=C:\deps\skia\out\Release-x64\skia.lib -DWEBP_LIBRARIES=C:\deps\skia\out\Release-x64\webp.lib -DUSE_SHARED_CMARK=OFF -DUSE_SHARED_CURL=OFF -DUSE_SHARED_GIF=OFF -DUSE_SHARED_JPEGLIB=OFF -DUSE_SHARED_ZLIB=OFF -DUSE_SHARED_LYNX=OFF -DUSE_SHARED_PIXMAN=OFF -DUSE_SHARED_PNG=OFF -DUSE_SHARED_TINYXML=OFF -DUSE_SHARED_WEBP=OFF -G Ninja ..
-
+        cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DLAF_BACKEND=skia -DSKIA_DIR=C:\deps\skia -DSKIA_LIBRARY_DIR=C:\deps\skia\out\Release-x64 -DSKIA_LIBRARY=C:\deps\skia\out\Release-x64\skia.lib -DWEBP_LIBRARIES=C:\deps\skia\out\Release-x64\webp.lib -DENABLE_UPDATER=OFF -G Ninja ..
+  
     - name: Compilar con Ninja
       run: |
         cd build
